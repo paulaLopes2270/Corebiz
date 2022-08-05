@@ -1,10 +1,10 @@
 import React from 'react';
 
 //imagens
-import Logo from '../../assets/header/Logo.png'
-import Loupe from '../../assets/header/Loupe.png'
+import Logo from '../../assets/header/Logo.svg'
+import Loupe from '../../assets/header/Loupe.svg'
 import Person from '../../assets/header/Person.svg'
-import Cart from '../../assets/header/Cart.png'
+import Cart from '../../assets/header/Cart.svg'
 
 //estilos
 import { HeaderTag, LogoContainer, FormComponent, MyAccount, CartContainer } from './Style'
