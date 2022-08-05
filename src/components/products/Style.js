@@ -30,15 +30,14 @@ export const Title = styled.div`
     margin: 0;
     width: fit-content;
     font-weight: 900;
-
     font-size: 20px;
     > hr {
       height: 4px;
       width: 65px;
-
       margin: 0;
       border: none;
       background: #c0c0c0;
+      margin-top: 6px;
     }
   }
 `
@@ -46,6 +45,7 @@ export const Title = styled.div`
 export const ProdCardComponent = styled.div`
   flex: 0 0 216px;
   width: 100%;
+  margin-top: 20px;
 
   @media (max-width: 650px) {
     flex: 0 0 140px;
