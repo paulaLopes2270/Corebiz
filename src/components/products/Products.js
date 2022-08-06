@@ -6,7 +6,7 @@ import starFull from '../../assets/products/star-full.svg'
 import leftArrow from '../../assets/products/left.svg'
 import rightArrow from '../../assets/products/right.svg'
 
-import { ProductContainer, RateContent, ProdCardComponent, PriceContent, Button, Title, ShowcaseComponent } from './Style'
+import { ProductContainer, RateContent, ProdCardComponent, PriceContent, Button, Title, CarouselContent, ShowcaseComponent } from './Style'
 
 export function Products() {
   const [productList, setProductList] = useState([])
@@ -43,53 +43,55 @@ export function Products() {
               <hr />
             </h2>
           </Title>
-          <button onClick={handleLeftClick}><img src={leftArrow} /></button>
-          <button onClick={handleRightClick}> <img src={rightArrow} /></button>
-          <div ref={carousel}>
-            {productList.map(product => {
-              // console.log("aqui!", product.installments[0]?.quantity)
-              return (
-                <ProdCardComponent>
-                  <div className='display' >
-                    <img src={product.imageUrl} />
-                  </div>
-                  <div className='description'>
-                    <h4> {product.productName}</h4>
-                    <RateContent>
-                      {Array(5)
-                        .fill("")
-                        .map((currentStar, index) => (
-                          <img
-                            key={index}
-                            src={index <= product.stars ? starFull : starEmpty}
-                            alt='avalições'
-                          />
-                        ))}
-                    </RateContent>
-                    <PriceContent>
-                      {product.listPrice ? (
-                        <h4>
-                          <span> de R$ {product.listPrice}</span>
-                        </h4>
-                      ) : (
-                        <h4>{""}</h4>
-                      )}
-                      <h3>Por R$ {product.price}</h3>
+          <CarouselContent>
+            <button onClick={handleLeftClick}><img src={leftArrow} /></button>
+            <button onClick={handleRightClick}> <img src={rightArrow} /></button>
+            <div ref={carousel}>
+              {productList.map(product => {
+                // console.log("aqui!", product.installments[0]?.quantity)
+                return (
+                  <ProdCardComponent>
+                    <div className='display' >
+                      <img src={product.imageUrl} />
+                    </div>
+                    <div className='description'>
+                      <h4> {product.productName}</h4>
+                      <RateContent>
+                        {Array(5)
+                          .fill("")
+                          .map((currentStar, index) => (
+                            <img
+                              key={index}
+                              src={index <= product.stars ? starFull : starEmpty}
+                              alt='avalições'
+                            />
+                          ))}
+                      </RateContent>
+                      <PriceContent>
+                        {product.listPrice ? (
+                          <h4>
+                            <span> de R$ {product.listPrice}</span>
+                          </h4>
+                        ) : (
+                          <h4>{""}</h4>
+                        )}
+                        <h3>Por R$ {product.price}</h3>
 
-                      {product.installments[0] ? (
-                        <p key='index'>
-                          ou em {product.installments[0].quantity}x de {product.installments[0].value}
-                        </p>
-                      ) : (
-                        <p>{""}</p>
-                      )}
-                    </PriceContent>
-                    <Button>Comprar</Button>
-                  </div>
-                </ProdCardComponent>
-              )
-            })}
-          </div>
+                        {product.installments[0] ? (
+                          <p key='index'>
+                            ou em {product.installments[0].quantity}x de {product.installments[0].value}
+                          </p>
+                        ) : (
+                          <p>{""}</p>
+                        )}
+                      </PriceContent>
+                      <Button>Comprar</Button>
+                    </div>
+                  </ProdCardComponent>
+                )
+              })}
+            </div>
+          </CarouselContent>
         </div>
       </ProductContainer >
     </ShowcaseComponent>

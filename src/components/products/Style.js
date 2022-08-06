@@ -13,23 +13,8 @@ export const ProductContainer = styled.div`
   > .centralizer {
     overflow: hidden;
     /* width: 60%; */
-    > button {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-}
-    > div {
-        display: flex;
-        gap: 99px;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        @media (max-width: 650px) {
-            gap: 50px 20px;
-        }
-        ::-webkit-scrollbar{
-            display: none;
-        }
-    }
+
+
 }
 
 `
@@ -50,6 +35,40 @@ export const Title = styled.div`
       border: none;
       background: #c0c0c0;
       margin-top: 6px;
+    }
+  }
+`
+
+export const CarouselContent = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+  box-sizing: border-box;
+  > div {
+      display: flex;
+      gap: 99px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      @media (max-width: 650px) {
+          gap: 50px 20px;
+      }
+      ::-webkit-scrollbar{
+          display: none;
+      }
+  }
+  > button {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    :first-child{
+      left: 0;
+    }
+    :nth-child(2){
+      right: 0;
     }
   }
 `
