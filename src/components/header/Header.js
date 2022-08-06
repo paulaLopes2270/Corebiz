@@ -9,8 +9,12 @@ import Cart from '../../assets/header/Cart.svg'
 //estilos
 import { HeaderTag, LogoContainer, FormComponent, MyAccount, CartContainer } from './Style'
 
+//contexto
+import { useCart } from '../../context/cartContext/CartContext';
+
 
 export function Header() {
+    const {cart} = useCart()
     return (
         <HeaderTag>
             <div>
@@ -32,7 +36,7 @@ export function Header() {
                     </MyAccount>
                     <CartContainer>
                         <img src={Cart} alt='cart' />
-                        {/* <span>{cart?.length ? cart.length : "0"}</span> */}
+                        <span>{cart?.length ? cart.length : "0"}</span>
                     </CartContainer>
                 </div>
             </div>

@@ -1,13 +1,17 @@
 import React from 'react';
 import Rotas from './routes'
 
-import {GlobalStyle} from './css/GlobalStyle'
+import { GlobalStyle } from './css/GlobalStyle'
+
+import { CartContextProvider } from "./context/cartContext/CartContext"
 
 function App() {
   return (
     <>
-    <GlobalStyle/>
-    <Rotas />
+      <CartContextProvider>
+        <GlobalStyle />
+        <Rotas />
+      </CartContextProvider>
     </>
   );
 }

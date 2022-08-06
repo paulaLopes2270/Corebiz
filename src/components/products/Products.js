@@ -8,8 +8,12 @@ import rightArrow from '../../assets/products/right.svg'
 
 import { ProductContainer, RateContent, ProdCardComponent, PriceContent, Button, Title, CarouselContent, ShowcaseComponent } from './Style'
 
+//contexto
+import { useCart } from '../../context/cartContext/CartContext'
+
 export function Products() {
   const [productList, setProductList] = useState([])
+  const { cart, setCart } = useCart()
 
   const carousel = useRef(null);
   // useEffect(() => { getProduct() }, [])
@@ -33,6 +37,7 @@ export function Products() {
     carousel.current.scrollLeft += carousel.current.offsetWidth
   }
 
+
   return (
     <ShowcaseComponent>
       <ProductContainer>
@@ -48,6 +53,10 @@ export function Products() {
             <button onClick={handleRightClick}> <img src={rightArrow} /></button>
             <div ref={carousel}>
               {productList.map(product => {
+                
+                const addCurrentProdToCart = () => {
+                  setCart([...cart, product])
+                }
                 // console.log("aqui!", product.installments[0]?.quantity)
                 return (
                   <ProdCardComponent>
@@ -85,7 +94,7 @@ export function Products() {
                           <p>{""}</p>
                         )}
                       </PriceContent>
-                      <Button>Comprar</Button>
+                      <Button onClick={addCurrentProdToCart}>Comprar</Button>
                     </div>
                   </ProdCardComponent>
                 )
