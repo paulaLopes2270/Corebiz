@@ -12,14 +12,26 @@ export const ProductContainer = styled.div`
 
   > .centralizer {
     overflow: hidden;
+    /* width: 60%; */
+    > button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+}
     > div {
-      display: flex;
-      gap: 30px;
-      @media (max-width: 650px) {
-        gap: 50px 20px;
-      }
+        display: flex;
+        gap: 99px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        @media (max-width: 650px) {
+            gap: 50px 20px;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
     }
-  }
+}
+
 `
 
 export const Title = styled.div`

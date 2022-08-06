@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { getProduct } from '../../services/productApi/ProductApi'
 
 import starEmpty from '../../assets/products/star-empty.svg'
 import starFull from '../../assets/products/star-full.svg'
+import leftArrow from '../../assets/products/left.svg'
+import rightArrow from '../../assets/products/right.svg'
 
 import { ProductContainer, RateContent, ProdCardComponent, PriceContent, Button, Title, ShowcaseComponent } from './Style'
 
 export function Products() {
   const [productList, setProductList] = useState([])
+
+  const carousel = useRef(null);
   // useEffect(() => { getProduct() }, [])
   useEffect(() => {
     const getData = async () => {
@@ -16,6 +20,18 @@ export function Products() {
     }
     getData()
   }, [])
+
+  const handleLeftClick = (e) => {
+    e.preventDefault();
+    console.log(carousel.current.offsetWidth)
+    carousel.current.scrollLeft -= carousel.current.offsetWidth
+
+  }
+  const handleRightClick = (e) => {
+    e.preventDefault();
+    console.log(carousel.current.offsetWidth)
+    carousel.current.scrollLeft += carousel.current.offsetWidth
+  }
 
   return (
     <ShowcaseComponent>
@@ -27,7 +43,9 @@ export function Products() {
               <hr />
             </h2>
           </Title>
-          <div>
+          <button onClick={handleLeftClick}><img src={leftArrow} /></button>
+          <button onClick={handleRightClick}> <img src={rightArrow} /></button>
+          <div ref={carousel}>
             {productList.map(product => {
               // console.log("aqui!", product.installments[0]?.quantity)
               return (
