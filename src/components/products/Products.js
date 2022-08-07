@@ -6,7 +6,7 @@ import starFull from '../../assets/products/star-full.svg'
 import leftArrow from '../../assets/products/left.svg'
 import rightArrow from '../../assets/products/right.svg'
 
-import { ProductContainer, RateContent, ProdCardComponent, PriceContent, Button, Title, CarouselContent, ShowcaseComponent } from './Style'
+import { ProductContainer, RateContent, ProdCardComponent, OffAlert, PriceContent, Button, Title, CarouselContent, ShowcaseComponent } from './Style'
 
 //contexto
 import { useCart } from '../../context/cartContext/CartContext'
@@ -16,7 +16,6 @@ export function Products() {
   const { cart, setCart } = useCart()
 
   const carousel = useRef(null);
-  // useEffect(() => { getProduct() }, [])
   useEffect(() => {
     const getData = async () => {
       const { data } = await getProduct()
@@ -35,8 +34,13 @@ export function Products() {
     e.preventDefault();
     console.log(carousel.current.offsetWidth)
     carousel.current.scrollLeft += carousel.current.offsetWidth
-  }
 
+  }
+  const convertPriceToBRL = (price) =>
+    (price / 100).toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+    })
 
   return (
     <ShowcaseComponent>
@@ -53,14 +57,16 @@ export function Products() {
             <button onClick={handleRightClick}> <img src={rightArrow} /></button>
             <div ref={carousel}>
               {productList.map(product => {
-                
+
                 const addCurrentProdToCart = () => {
                   setCart([...cart, product])
                 }
-                // console.log("aqui!", product.installments[0]?.quantity)
                 return (
                   <ProdCardComponent>
                     <div className='display' >
+                      <OffAlert style={{ visibility: product.listPrice ? "visible" : "hidden" }}>
+                        <strong>Off</strong>
+                      </OffAlert>
                       <img src={product.imageUrl} />
                     </div>
                     <div className='description'>
@@ -79,16 +85,16 @@ export function Products() {
                       <PriceContent>
                         {product.listPrice ? (
                           <h4>
-                            <span> de R$ {product.listPrice}</span>
+                            <span> de {convertPriceToBRL(product.listPrice)}</span>
                           </h4>
                         ) : (
                           <h4>{""}</h4>
                         )}
-                        <h3>Por R$ {product.price}</h3>
+                        <h3>Por {convertPriceToBRL(product.price)}</h3>
 
                         {product.installments[0] ? (
                           <p key='index'>
-                            ou em {product.installments[0].quantity}x de {product.installments[0].value}
+                            ou em {product.installments[0].quantity}x de {convertPriceToBRL(product.installments[0].value)}
                           </p>
                         ) : (
                           <p>{""}</p>

@@ -7,12 +7,12 @@ import { CartContextProvider } from "./context/cartContext/CartContext"
 
 function App() {
   return (
-    <>
-      <CartContextProvider>
-        <GlobalStyle />
-        <Rotas />
-      </CartContextProvider>
-    </>
+
+    <CartContextProvider>
+      <GlobalStyle />
+      <Rotas />
+    </CartContextProvider>
+
   );
 }
 

@@ -1,16 +1,20 @@
 import { useState } from "react"
-import { NewsPostsContainer } from "./components/newsPostsContainer/NewsPostsContainer"
-import { Component, NewSubContainerComponent } from "./Style"
+import { FormContainer } from "./components/newsPostsContainer/NewsPostsContainer"
+import { Component } from "./Style"
+import { NewSubContainer } from './components/newSubContainer/NewSubContainer'
 
 export const NewsPosts = () => {
-    // const [newsPostsrStatus, setNewsPostsStatus] = useState(true)
+    const [newsLetterStatus, setNewsletterStatus] = useState(true)
 
-    // const setStatus = () => setNewsletterStatus(!newsLetterStatus)
+    const setStatus = () => setNewsletterStatus(!newsLetterStatus)
     return (
         <Component>
-            
-            <NewsPostsContainer />
 
+            {newsLetterStatus ? (
+                <FormContainer newsLetterStatus={setStatus} />
+            ) : (
+                <NewSubContainer newsLetterStatus={setStatus} />
+            )}
         </Component>
     )
 }

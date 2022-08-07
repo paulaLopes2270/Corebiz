@@ -108,6 +108,47 @@ export const ProdCardComponent = styled.div`
     }
   }
 `
+export const OffAlert = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 81px;
+  height: 72px;
+  padding: 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @media (max-width: 650px) {
+    width: 50px;
+    height: 45px;
+    padding: 3px;
+  }
+
+  strong {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
+    z-index: 5;
+    @media (max-width: 650px) {
+      font-size: 10px;
+    }
+  }
+
+  :before {
+    content: "";
+    position: absolute;
+    top: -45%;
+    right: -45%;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+    background: #f8475f;
+    z-index: 0;
+  }
+`
 
 export const RateContent = styled.div`
   display: flex;

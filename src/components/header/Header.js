@@ -11,14 +11,16 @@ import { HeaderTag, LogoContainer, FormComponent, MyAccount, CartContainer } fro
 
 //contexto
 import { useCart } from '../../context/cartContext/CartContext';
+import { Hamburger } from './componets/hamburger/Hamburger';
 
 
 export function Header() {
-    const {cart} = useCart()
+    const { cart } = useCart()
     return (
         <HeaderTag>
             <div>
-                <div>
+                <div className='centralizer'>
+                    <Hamburger />
                     <LogoContainer>
                         <img src={Logo} alt='Corebiz' />
                     </LogoContainer>

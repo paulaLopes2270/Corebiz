@@ -4,28 +4,30 @@ export const HeaderTag = styled.header`
 position: relative;
 display: flex;
 justify-content: center;
-max-height:80px;
-max-width: 1920px;
+height: var(--header-height);
+font-family: var(--nunito);
+z-index: 1000;
 
 
 > div {
+    position: fixed;
     top: 0;
     display: flex;
     align-items: center;
-    justify-content:center ;
     width: 100%;
-    height: 80px;
-    /* background: pink; */
+    height: var(--header-height);
+    background: white;
 
     > div {
       display: flex;
-      width: 65%;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
       flex-wrap: wrap;
-      /* background-color: blue; */
     }
+  }
+  @media (max-width: 650px) {
+    padding-bottom: 10px;
   }
 `
 export const LogoContainer = styled.div`
@@ -49,6 +51,9 @@ export const FormComponent = styled.form`
   }
   > img {
     flex: 0 0 auto;
+  }
+  @media (max-width: 650px) {
+    order: 4;
   }`
 
 export const MyAccount = styled.a`
@@ -59,10 +64,14 @@ gap: 6.5px;
 span {
   text-transform: capitalize;
   font-size: 13px;
-}`
+}
+@media (max-width: 650px) {
+    display: none;
+  }`
 
 export const CartContainer = styled.div`
 display: flex;
+
 align-items: center;
 gap: 5px;
 span {

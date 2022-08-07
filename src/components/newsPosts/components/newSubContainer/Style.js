@@ -19,12 +19,11 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-
   height: 48px;
   width: 328px;
+  margin: 0 auto;
   margin-top: 15px;
   border-radius: 5px;
-
   background: black;
   color: white;
   outline: none;
